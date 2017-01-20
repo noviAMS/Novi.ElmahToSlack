@@ -121,7 +121,7 @@
     <Folder Include="Views\Home\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Novi.ElmahToSlack\Novi.ElmahToSlack\Novi.ElmahToSlack.csproj">
+    <ProjectReference Include="..\Novi.ElmahToSlack\Novi.ElmahToSlack.csproj">
       <Project>{09ac8599-2e15-481c-9501-9f82f5d78a2c}</Project>
       <Name>Novi.ElmahToSlack</Name>
     </ProjectReference>

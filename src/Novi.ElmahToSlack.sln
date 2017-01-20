@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Novi.ElmahToSlack", "Novi.ElmahToSlack\Novi.ElmahToSlack\Novi.ElmahToSlack.csproj", "{09AC8599-2E15-481C-9501-9F82F5D78A2C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Novi.ElmahToSlack", "Novi.ElmahToSlack\Novi.ElmahToSlack.csproj", "{09AC8599-2E15-481C-9501-9F82F5D78A2C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Novi.WebAppTest", "Novi.WebAppTest\Novi.WebAppTest.csproj", "{8793FADD-1387-4BCE-AA5A-DA1C3D2BE6C8}"
 EndProject
