@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Threading.Tasks;
 using Elmah;
 
 namespace Novi.ElmahToSlack
@@ -35,15 +36,18 @@ namespace Novi.ElmahToSlack
 
 			if (!(error.Exception is SlackException))
 			{
-				try
+				Task.Run(() => // this doesn't have to hang up the executing code
 				{
-					var client = new SlackClient(_userName, _channel, new Uri(_webHookUri));
-					client.SendSlackMessage($"{error.ServerVariables["SERVER_NAME"]}: {error.Message}");
-				}
-				catch
-				{
-					throw new SlackException("Can't Slack the elmah error.");
-				}
+					try
+					{
+						var client = new SlackClient(_userName, _channel, new Uri(_webHookUri));
+						client.SendSlackMessage($"{error.ServerVariables["SERVER_NAME"]}: {error.Message}");
+					}
+					catch
+					{
+						throw new SlackException("Can't Slack the elmah error.");
+					}
+				});
 			}
 
 			return result;
