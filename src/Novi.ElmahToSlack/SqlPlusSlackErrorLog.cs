@@ -41,11 +41,11 @@ namespace Novi.ElmahToSlack
 					try
 					{
 						var client = new SlackClient(_userName, _channel, new Uri(_webHookUri));
-						client.SendSlackMessage($"{error.ServerVariables["SERVER_NAME"]}: {error.Message}");
+						client.SendSlackMessage($"{error.ServerVariables["SERVER_NAME"]}: [{error.Type}] {error.Message}");
 					}
-					catch
+					catch (Exception exc)
 					{
-						throw new SlackException("Can't Slack the elmah error.");
+						throw new SlackException("Can't Slack the elmah error. See InnerException.", exc);
 					}
 				});
 			}
