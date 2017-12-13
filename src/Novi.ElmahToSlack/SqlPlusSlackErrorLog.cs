@@ -7,20 +7,20 @@ namespace Novi.ElmahToSlack
 {
 	public class SqlPlusSlackErrorLog : SqlErrorLog
 	{
-		private readonly string _webHookUri;
-		private readonly string _userName;
-		private readonly string _channel;
+		public string WebHookUri { get; set; }
+		public string UserName { get; set; }
+		public string Channel { get; set; }
 
 		public SqlPlusSlackErrorLog(IDictionary config) : base(config)
 		{
-			_webHookUri = config["webHookUri"].ToString();
-			if (string.IsNullOrWhiteSpace(_webHookUri))
+			WebHookUri = config["webHookUri"].ToString();
+			if (string.IsNullOrWhiteSpace(WebHookUri))
 				throw new Exception("The elmah errorLog config element must have a value for webHookUri.");
-			_userName = config["userName"].ToString();
-			if (string.IsNullOrWhiteSpace(_userName))
+			UserName = config["userName"].ToString();
+			if (string.IsNullOrWhiteSpace(UserName))
 				throw new Exception("The elmah errorLog config element must have a value for userName.");
-			_channel = config["channel"].ToString();
-			if (string.IsNullOrWhiteSpace(_channel))
+			Channel = config["channel"].ToString();
+			if (string.IsNullOrWhiteSpace(Channel))
 				throw new Exception("The elmah errorLog config element must have a value for channel.");
 		}
 
@@ -40,7 +40,7 @@ namespace Novi.ElmahToSlack
 				{
 					try
 					{
-						var client = new SlackClient(_userName, _channel, new Uri(_webHookUri));
+						var client = new SlackClient(UserName, Channel, new Uri(WebHookUri));
 						client.SendSlackMessage($"{error.ServerVariables["SERVER_NAME"]}: [{error.Type}] {error.Message}");
 					}
 					catch (Exception exc)
